@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}<link href="/static/css/login.css" rel="stylesheet">{% endblock %}
+{% block title %}登录{% endblock %}
+{% block content %}
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                    <div class="logopanel m-b">
+                        <h1></h1>
+                    </div>
+                    <div class="m-b"></div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <form class='form-login' action="/login/" method="post">
+              {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              {% csrf_token %}
+              <h2 class="text-center">欢迎登录</h2>
+
+              <div class="form-group" >
+                  {{ login_form.userID.label_tag }}
+                  {{ login_form.userID}}
+              </div>
+              <div class="form-group">
+                  {{ login_form.password.label_tag }}
+                  {{ login_form.password }}
+              </div>
+                <div class="form-group" >
+                  {{ login_form.user_role.label_tag }}
+                  {{ login_form.user_role}}
+              </div>
+              <button type="submit" class="btn btn-success btn-block">登录</button>
+          </form>
+                <br>
+                <br>
+            <strong>还没有账号？ <a href="/register/">立即注册&raquo;</a></strong>
+            </div>
+
+        </div>
+
+        <div class="signup-footer">
+            <div class="pull-left" style="position:absolute;bottom:0px;">
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script>All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+{% block script %}
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
+{% endblock %}

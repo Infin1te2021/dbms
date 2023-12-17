@@ -1,0 +1,71 @@
+﻿    {% extends 'base.html' %}
+        {% block title %}update{% endblock %}
+        {% block css %} <link href="/static/css/form.css" rel="stylesheet">{% endblock %}
+        {% block content %}
+        <div class="" >
+            <form action="{% url 'learn:feedback_handler' %}" method="post" enctype="multipart/form-data" id="signupForm"  class="elegant-aero">
+                 <label class="elegant-aero label">
+                     <center><h2>为：<<{{ data.title }}>>&nbsp;填写反馈信息</h2></center>
+                 </label>
+                <input name="id" type="hidden" value="{{ data.id }}" ><br/>
+
+                <label class="elegant-aero label">
+                     <span>请输入内容</span>
+                    <textarea id="feedback" name="feedback"></textarea>
+                 </label>
+                    <input name="feedback_old" type="hidden" value="{{ data.feedback }}" ><br/>
+                <table>
+                     <tr class="btrr">
+                        <td width="598">
+                            <input type="reset"  class="button" value="重置">
+
+                            <input type="submit" class="button" value="提交"  />
+
+                        </td>
+
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    {% endblock %}
+    {% block script %}
+        <script type="text/javascript">
+            window.onload = function(){
+                $("option").click(function(){
+                    $("#select").removeAttr("size").blur();
+                });
+                $("#select").focus(function(){
+                    $("#select").attr("size","3");
+                })
+            }
+        </script>
+        <script>
+        $().ready(function() {
+        // 在键盘按下并释放及提交后验证提交表单
+          $("#signupForm").validate({
+                rules: {
+                  coursename: {
+                    required: true,
+                    minlength: 2
+                  },
+                  describe: {
+                    required: true,
+                    minlength: 2
+                  },
+                },
+                messages: {
+                    coursename: {
+                        required: "请输入标题",
+                        minlength: "课程名称长度不能小于2"
+                    },
+                      describe: {
+                        required: "请输入文章内容",
+                        minlength: "简介长度不能小于2"
+                    },
+
+                }
+            });
+        });
+        </script>
+    {% endblock %}

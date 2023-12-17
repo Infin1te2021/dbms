@@ -1,0 +1,66 @@
+﻿{% extends 'base.html' %}
+{% block title %}all{% endblock %}
+{% block css%}
+<link href="/static/css/learn-base.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+         <div class="container">
+            <form action="/learn/queryM" method="get" role="form">
+                <div class="form-inline">
+                      <label class="control-label">编号: &nbsp;</label><input class="form-control" type="text" name="id" placeholder="Enter id"/>
+                      <input type="submit" id="queryById" value="查询" class="btn btn-default "/>
+                         <a onclick="GetCkboxValues()" class="btn btn-danger">取消订阅</a>
+                  </div>
+            </form>
+        <p></p>
+        <table class="table table-bordered form-inline" align="center" >
+            <thead >
+                <tr>
+                <th>
+                    <div class="checkbox ">
+                    <label>
+                        <input type="checkbox" id="checkAll" value="">
+                    </label>
+                    </div>
+                </th>
+                <th>编号</th>  <th>标题</th> <th>作者</th> <th>内容简介</th><th>更新状况</th>  <th>订阅数</th>  <th>反馈</th>  <th>创建时间</th><th>操作</th>
+                </tr>
+            </thead>
+            <tbody >
+            {%  for d in data %}
+            <!-- 显示不同背景 -->
+                <tr {% if forloop.counter|divisibleby:"2" %}class="active" {% else %} class="success"  {% endif %}  >
+                    <td>
+                         <input type="checkbox" name="subBox" value="{{d.id}}" >
+                    </td>
+                     <td>{{ d.id }}</td>
+                     <td>{{ d.title }}</td>
+                     <td>{{ d.authorId }}</td>
+                     <td>{{ d.content }}</td>
+                     <td>{{ d.status }}</td>
+                     <td>{{ d.subscribeNum }}</td>
+                     <td>{{ d.feedback }}</td>
+                     <td>{{ d.c_time }}</td>
+                    <td>&nbsp;<a class="glyphicon glyphicon-pencil" href="/learn/feedback?id={{d.id}}"></a>&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <!-- 页面导航栏 -->
+         <p>
+            {% if data.has_previous %}
+                <a href="?page={{ data.paginator.first_page }} ">首页</a>&nbsp;&nbsp;&nbsp;
+                <a href="?page={{ data.previous_page_number }}">上一页</a>&nbsp;&nbsp;
+            {% endif %}
+
+                第{{ data.number }}页 | 共{{ data.paginator.num_pages }}页&nbsp;&nbsp;
+            {% if data.has_next %}
+                <a href="?page={{ data.next_page_number }}">下一页</a>&nbsp;&nbsp;&nbsp;
+                 <a href="?page={{ data.paginator.num_pages }} ">尾页</a>&nbsp;
+            {% endif %}
+        </p>
+    </div>
+{% endblock %}
+{% block script %}
+ <script src="/static/js/learn-qx.js"></script>
+{% endblock %}

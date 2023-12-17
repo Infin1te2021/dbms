@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+	 <!-- 引入jQuery -->
+	<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	 <!-- 引入 Bootstrap -->
+	 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+	 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+	  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	 <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    {% block css %}{% endblock %}
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+
+    {% block content %}{% endblock %}
+    {% block script %}{% endblock %}
+</body>
+</html>
