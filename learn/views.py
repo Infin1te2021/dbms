@@ -9,36 +9,55 @@ from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-from learn.models import Learn
+from learn.models import Learn,Goods,supplier
 from login.models import Author,Reader
 
 def insertPage(request):
     return render_to_response('learn/insert.html')
 @csrf_exempt
+# def add(request):
+#     user_id = request.session['user_id']
+#     author = Author.objects.get(authorId=user_id)
+#     aa = Learn.objects.filter(authorId=author)
+#     id=request.POST['id']
+#     title=request.POST['title']
+#     subscribeNum=request.POST['subscribeNum']
+#     feedback=request.POST['feedback']
+#     content=request.POST['describe']
+#     status=request.POST['status']
+#     dt = datetime.datetime.now()
+#     cl=Learn()
+#     if  len(id)  > 0 :
+#        cl.id=id
+#     cl.authorId=author
+#     cl.title=title
+#     cl.subscribeNum=subscribeNum
+#     cl.feedback=feedback
+#     cl.content=content
+#     cl.status=status
+#     cl.c_time=dt
+#     cl.save()
+#     return HttpResponseRedirect("/learn/show")
 def add(request):
-    user_id = request.session['user_id']
-    author = Author.objects.get(authorId=user_id)
-    aa = Learn.objects.filter(authorId=author)
     id=request.POST['id']
-    title=request.POST['title']
-    subscribeNum=request.POST['subscribeNum']
-    feedback=request.POST['feedback']
-    content=request.POST['describe']
-    status=request.POST['status']
-    dt = datetime.datetime.now()
-    cl=Learn()
-    if  len(id)  > 0 :
-       cl.id=id
-    cl.authorId=author
-    cl.title=title
-    cl.subscribeNum=subscribeNum
-    cl.feedback=feedback
-    cl.content=content
-    cl.status=status
-    cl.c_time=dt
+    name=request.POST['name']
+    category=request.POST['category']
+    brand=request.POST['brand']
+    price=request.POST['price']
+    description = request.POST['description']
+    quantity = request.POST['quantity']
+    sid = supplier.objects.filter(sid=request.POST['sid']).first()
+    cl=Goods()
+    cl.id=id
+    cl.name=name
+    cl.category=category
+    cl.brand=brand
+    cl.price=price
+    cl.description=description
+    cl.quantity=quantity
+    cl.sid=sid
     cl.save()
     return HttpResponseRedirect("/learn/show")
-
 def delSelect(request):
      arr = request.GET['arr']
      bb = str(arr).split(',')
@@ -50,11 +69,26 @@ def delSelect(request):
      else:
         Learn.objects.extra(where=['id IN '+str(cc)+'']).delete()
      return HttpResponse("delect success")
+# def show(request):
+#     limit = 10
+#     user_id=request.session['user_id']
+#     author=Author.objects.get(authorId=user_id)
+#     aa = Learn.objects.filter(authorId=author)
+#     paginator = Paginator(aa, limit)
+#     page = request.GET.get('page')
+#     try:
+#         aa = paginator.page(page)
+#     except PageNotAnInteger:
+#         aa = paginator.page(1)
+#     except EmptyPage:
+#         aa = paginator.page(paginator.num_pages)
+#     return render_to_response('learn/curdA.html', {'data':aa})
 def show(request):
     limit = 10
     user_id=request.session['user_id']
     author=Author.objects.get(authorId=user_id)
-    aa = Learn.objects.filter(authorId=author)
+    #aa = Learn.objects.filter(authorId=author)
+    aa = Goods.objects.all()
     paginator = Paginator(aa, limit)
     page = request.GET.get('page')
     try:
@@ -64,6 +98,9 @@ def show(request):
     except EmptyPage:
         aa = paginator.page(paginator.num_pages)
     return render_to_response('learn/curdA.html', {'data':aa})
+# def show(request):
+#     data = Goods.objects.all()
+#     return render(request, 'show.html', {'data': data})
 
 def showAll(request):
     limit = 10
@@ -78,9 +115,11 @@ def showAll(request):
         aa = paginator.page(paginator.num_pages)
     return render_to_response('learn/curdAll.html',{'data':aa})
 
+
+
 def showAll0(request):
     limit = 10
-    aa = Learn.objects.get_queryset().order_by('id')
+    aa = Goods.objects.get_queryset().order_by('id')
     paginator = Paginator(aa, limit)
     page = request.GET.get('page')
     try:
