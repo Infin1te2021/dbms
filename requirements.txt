@@ -14,21 +14,17 @@ kiwisolver==1.2.0
 lml==0.0.2
 macropy3==1.1.0b2
 MarkupSafe==1.1.1
-#matplotlib==3.2.1
-#matplotlib
+matplotlib
 mkl==2019.0
 mysql-connector==2.2.9
-#mysqlclient==1.4.6
-#mysqlclient
-#numpy==1.26.2
-#pandas==1.0.3
-#pandas
+mysqlclient
+numpy==1.26.2
+pandas
 pandocfilters==1.4.2
 parse==1.12.1
 parso==0.5.1
 pickleshare==0.7.5
-#Pillow==7.1.0
-#Pillow
+Pillow
 plac==0.9.6
 pluggy==0.6.0
 prettytable==0.7.2
@@ -40,7 +36,6 @@ PyMySQL==0.9.3
 pyparsing==2.4.6
 python-dateutil==2.8.1
 pytz==2019.3
-#scipy==1.2.0
-#scipy
+scipy
 six==1.14.0
 
