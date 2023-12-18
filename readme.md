@@ -59,3 +59,14 @@ pycharm 运行django项目，注意看自己的pycharm是否有python  interpret
 如自己有多个python 则注意好，当前项目用的是哪个python。
 ```
 
+### Configuring the Setting file
+A more private way to configure the `settings.py` file. \
+Create `.env` file in root file and paste the variables with the default keys here
+```bash
+NAME = "shop"               #Table name
+USER = "root"               #Account 
+PASSWORD = "password"       #Password
+HOST = "127.0.0.1"          #IP
+PORT = "3306"               #Port
+```
+Feel free to modify the keys.
