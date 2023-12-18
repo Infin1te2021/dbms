@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 import os
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+
+load_dotenv(dotenv_path)
+
+NAME = os.getenv("NAME")
+USER = os.getenv("USER")
+PASSWORD = os.getenv("PASSWORD")
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(5s8!djtu_1cdu*lu(phi*_y+-8i*$6wlf_i3%h49(77pbk-z_'
 DEBUG = True
@@ -51,15 +63,15 @@ WSGI_APPLICATION = 'onlineEN.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shop',         #数据库名字
-        'USER': 'root',          #账号
-        'PASSWORD': '123456',      #密码
-        'HOST': '127.0.0.1',    #IP
-        'PORT': '3306',         #端口
+        'NAME': NAME,
+        'USER': USER,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST,
+        'PORT': PORT,
         'OPTIONS': {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
             'charset': 'utf8mb4'
-         }
+        }
     }
 }
 
