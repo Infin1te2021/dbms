@@ -32,6 +32,7 @@
                     <td>
                          <input type="checkbox" name="subBox" value="{{d.id}}" >
                     </td>
+            <!-- 显示不同背景-->
                      <td>{{ d.id }}</td>
                      <td>{{ d.title }}</td>
                      <td>{{ d.authorId }}</td>
@@ -40,7 +41,8 @@
                      <td>{{ d.subscribeNum }}</td>
                      <td>{{ d.feedback }}</td>
                      <td>{{ d.c_time }}</td>
-                    </tr>
+
+
             {% endfor %}
             </tbody>
         </table>

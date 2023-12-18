@@ -5,21 +5,45 @@
         <div class="" >
             <form action="{% url 'learn:add' %}" method="post" enctype="multipart/form-data" id="signupForm"  class="elegant-aero">
                  <label class="elegant-aero label">
-                     <center><h2>我的小说</h2></center>
+                     <center><h2>增加</h2></center>
                  </label>
+                <!--
                 <input name="id" type="hidden" value="" ><br/>
+                -->
+                <label class="elegant-aero label">
+                     <span>请输入ID</span>
+                        <input  type="text" id = "id"  name="id" placeholder="Enter title" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入商品名称</span>
+                        <input  type="text" id = "good_name"  name="name" placeholder="Enter name" />
+                 </label>
 
                 <label class="elegant-aero label">
-                     <span>请输入标题</span>
-                        <input  type="text" id = "title"  name="title" placeholder="Enter title" />
+                     <span>类别</span>
+                        <input  type="text" id = "category"  name="category" placeholder="Enter catetory" />
                  </label>
-             <label class="elegant-aero label">
-                     <span>请输入内容</span>
-                    <textarea id="describe" name="describe" placeholder="Enter describe"></textarea>
+
+                <label class="elegant-aero label">
+                     <span>品牌</span>
+                        <input  type="text" id = "brand"  name="brand" placeholder="Enter brand" />
+                 </label>
+
+                <label class="elegant-aero label">
+                     <span>价格</span>
+                        <input  type="text" id = "price"  name="price" placeholder="Enter price" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>描述</span>
+                        <input  type="text" id = "description"  name="description" placeholder="Enter description" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>数量</span>
+                        <input  type="text" id = "quantity"  name="quantity" placeholder="Enter quantity" />
                  </label>
                    <label class="elegant-aero label">
-                     <span>请输入更新情况</span>
-                        <input  type="text" id = "status"  name="status" placeholder="Enter status" />
+                     <span>供应商</span>
+                        <input  type="text" id = "sid"  name="sid" placeholder="Enter supply" />
                  </label>
                 <input  type="hidden" id = "subscribeNum"  name="subscribeNum" value="0" />
                 <input  type="hidden" id = "feedback"  name="feedback" value="None" />

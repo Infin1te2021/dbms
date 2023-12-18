@@ -4,8 +4,8 @@ from django.core.exceptions import ValidationError
 from captcha.fields import CaptchaField
 class UserForm(forms.Form):
     Identify = (
-        ('0', "读者"),
-        ('1', "作者"),
+        ('0', "用户"),
+        ('1', "管理员"),
     )
     user_role=forms.ChoiceField(label='身份:', choices=Identify)
     userID = forms.CharField(label='账号:', max_length=16, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -16,8 +16,8 @@ class RegisterForm(forms.Form):
         ('female', "女"),
     )
     Identify = (
-        ('0', "读者"),
-        ('1', "作者"),
+        ('0', "用户"),
+        ('1', "管理员"),
     )
     user_role = forms.ChoiceField(label='身份:', choices=Identify)
     username = forms.CharField(label="用户名:", max_length=16, widget=forms.TextInput(attrs={'class': 'form-control'}))

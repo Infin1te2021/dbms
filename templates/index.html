@@ -16,7 +16,7 @@
                             <span><img alt="image" class="img-circle" src="/static/img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                                <span class="block m-t-xs"><strong class="font-bold">作者：{{ request.session.user_name }}</strong></span>
+                                <span class="block m-t-xs"><strong class="font-bold">{{ request.session.user_name }}</strong></span>
 
                                 </span>
                             </a>
@@ -47,7 +47,22 @@
 
                    {% if request.session.user_qx %}
                             <li>
-                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">我的小说</span></a>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">商品信息</span></a>
+                            </li>
+                             <li>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">客户信息</span></a>
+                            </li>
+                             <li>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">员工信息</span></a>
+                            </li>
+                             <li>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">供应商信息</span></a>
+                            </li>
+                             <li>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">订单信息</span></a>
+                            </li>
+                             <li>
+                                 <a class="J_menuItem" href="{% url 'learn:show' %}"><i class="glyphicon glyphicon-th"></i> <span class="nav-label">支付信息</span></a>
                             </li>
                             <li>
                                  <a class="J_menuItem" href="{% url 'learn:showAll' %}"><i class="glyphicon glyphicon-edit"></i> <span class="nav-label">小说库</span></a>
@@ -58,10 +73,10 @@
 
                    {% else %}
                         <li>
-                            <a class="J_menuItem" href="{% url 'learn:showAll0' %}"><i class="fa fa-table"></i> <span class="nav-label">小说库</span></a>
+                            <a class="J_menuItem" href="{% url 'learn:showAll0' %}"><i class="fa fa-table"></i> <span class="nav-label">商品信息</span></a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="{% url 'learn:showMy' %}"><i class="fa fa-table"></i> <span class="nav-label">我的订阅</span></a>
+                            <a class="J_menuItem" href="{% url 'learn:showAll0' %}"><i class="fa fa-table"></i> <span class="nav-label">支付信息</span></a>
                         </li>
                             <li>
                              <a class="J_menuItem" href="{% url 'user_center' %}"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">个人中心</span></a>
