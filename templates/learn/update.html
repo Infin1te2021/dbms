@@ -5,21 +5,41 @@
         <div class="" >
             <form action="{% url 'learn:add' %}" method="post" enctype="multipart/form-data" id="signupForm"  class="elegant-aero">
                  <label class="elegant-aero label">
-                     <center><h2>我的小说</h2></center>
+                     <center><h2>商品信息</h2></center>
                  </label>
                 <input name="id" type="hidden" value="{{ data.id }}" ><br/>
 
                 <label class="elegant-aero label">
-                     <span>请输入标题</span>
-                        <input  type="text" id = "title"  name="title" value="{{ data.title }}" />
+                     <span>请输入商品编号</span>
+                        <input  type="text" id = "title"  name="title" value="{{ data.id }}" />
                  </label>
                 <label class="elegant-aero label">
-                     <span>请输入内容</span>
-                    <textarea id="describe" name="describe">{{ data.content }}</textarea>
+                     <span>请输入商品名称</span>
+                    <input  type="text" id = "name"  name="name" value="{{ data.name }}" />
                  </label>
                   <label class="elegant-aero label">
-                     <span>请输入更新状态</span>
-                        <input  type="text" id = "status"  name="status" value="{{ data.status }}" />
+                     <span>请输入商品类别</span>
+                        <input  type="text" id = "category"  name="category" value="{{ data.category }}" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入商品品牌</span>
+                        <input  type="text" id = "brand"  name="brand" value="{{ data.brand }}" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入商品价格</span>
+                        <input  type="text" id = "price"  name="price" value="{{ data.price }}" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入商品描述</span>
+                        <input  type="text" id = "description"  name="description" value="{{ data.description }}" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入商品描述</span>
+                        <input  type="text" id = "quantity"  name="quantity" value="{{ data.quantity }}" />
+                 </label>
+                <label class="elegant-aero label">
+                     <span>请输入供应商编号</span>
+                        <input  type="text" id = "sid"  name="sid" value="{{ data.sid.sid }}" />
                  </label>
                 <input  type="hidden" id = "subscribeNum"  name="subscribeNum" value="{{ data.subscribeNum }}" />
                 <input  type="hidden" id = "feedback"  name="feedback" value="{{ data.feedback }}" />

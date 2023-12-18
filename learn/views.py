@@ -38,6 +38,7 @@ def insertPage(request):
 #     cl.c_time=dt
 #     cl.save()
 #     return HttpResponseRedirect("/learn/show")
+#重写后的Add
 def add(request):
     id=request.POST['id']
     name=request.POST['name']
@@ -58,17 +59,30 @@ def add(request):
     cl.sid=sid
     cl.save()
     return HttpResponseRedirect("/learn/show")
+# def delSelect(request):
+#      arr = request.GET['arr']
+#      bb = str(arr).split(',')
+#      cc = [i for i in bb if i != '']
+#      cc = tuple(map(int, cc))
+#      if len(cc) ==1:
+#         blist = "(" + bb[-1] + ")"
+#         Learn.objects.extra(where=['id IN ' + str(blist) + '']).delete()
+#      else:
+#         Learn.objects.extra(where=['id IN '+str(cc)+'']).delete()
+#      return HttpResponse("delect success")
+
+#重写批量删除
 def delSelect(request):
-     arr = request.GET['arr']
-     bb = str(arr).split(',')
-     cc = [i for i in bb if i != '']
-     cc = tuple(map(int, cc))
-     if len(cc) ==1:
+    arr = request.GET['arr']
+    bb = str(arr).split(',')
+    cc = [i for i in bb if i != '']
+    cc = tuple(map(int, cc))
+    if len(cc) == 1:
         blist = "(" + bb[-1] + ")"
-        Learn.objects.extra(where=['id IN ' + str(blist) + '']).delete()
-     else:
-        Learn.objects.extra(where=['id IN '+str(cc)+'']).delete()
-     return HttpResponse("delect success")
+        Goods.objects.extra(where=['id IN ' + str(blist) + '']).delete()
+    else:
+        Goods.objects.extra(where=['id IN ' + str(cc) + '']).delete()
+    return HttpResponse("delect success")
 # def show(request):
 #     limit = 10
 #     user_id=request.session['user_id']
@@ -83,6 +97,7 @@ def delSelect(request):
 #     except EmptyPage:
 #         aa = paginator.page(paginator.num_pages)
 #     return render_to_response('learn/curdA.html', {'data':aa})
+#重写后的show
 def show(request):
     limit = 10
     user_id=request.session['user_id']
@@ -164,9 +179,14 @@ def queryByIdM(request):
     bb=Learn.objects.filter(id=id)
     return render_to_response('learn/curdMy.html', {'data':bb})
 
+# def update(request):
+#     id=request.GET['id']
+#     bb=Learn.objects.get(id=id)
+#     return render_to_response('learn/update.html',{'data':bb})
+#重写update方法
 def update(request):
     id=request.GET['id']
-    bb=Learn.objects.get(id=id)
+    bb=Goods.objects.get(id=id)
     return render_to_response('learn/update.html',{'data':bb})
 def feedback(request):
     id=request.GET['id']
@@ -185,12 +205,17 @@ def feedback_handler(request):
     cc.save()
     return HttpResponseRedirect("/learn/showAll0")
 
+# def delByID(request):
+#     id=request.GET['id']
+#     bb=Learn.objects.get(id=id)
+#     bb.delete()
+#     return HttpResponseRedirect("/learn/show")
+#重写的单个删除
 def delByID(request):
     id=request.GET['id']
-    bb=Learn.objects.get(id=id)
+    bb=Goods.objects.get(id=id)
     bb.delete()
     return HttpResponseRedirect("/learn/show")
-
 def subscribe(request):
     user_id = request.session['user_id']
     reader = Reader.objects.get(readerId=user_id)
